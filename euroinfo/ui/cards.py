@@ -22,6 +22,41 @@ def _label(text: str, name: str, *, wrap: bool = False) -> QLabel:
     return label
 
 
+def _headline_html(text: str) -> str:
+    # Newsreader reports too little line height to Qt, so wrapped headlines overlapped
+    # and capitals were clipped. Explicit spacing keeps every line clear.
+    import html
+    return f'<p style="margin:0; line-height:128%">{html.escape(text)}</p>'
+
+
+class HeadlineLabel(QLabel):
+    """Formatted text otherwise asks for the height of a very narrow column; use the real width."""
+
+    def minimumSizeHint(self) -> QSize:
+        return QSize(1, self.fontMetrics().height())
+
+    def sizeHint(self) -> QSize:
+        width = max(1, self.width())
+        return QSize(width, self.heightForWidth(width))
+
+
+def _headline(text: str, name: str) -> QLabel:
+    label = HeadlineLabel(_headline_html(text))
+    label.setIndent(0)
+    label.setMargin(0)
+    label.setObjectName(name)
+    label.setTextFormat(Qt.TextFormat.RichText)
+    label.setWordWrap(True)
+    label.setAttribute(Qt.WidgetAttribute.WA_TransparentForMouseEvents)
+    label.setProperty("plainText", text)
+    return label
+
+
+def set_headline(label: QLabel, text: str) -> None:
+    label.setText(_headline_html(text))
+    label.setProperty("plainText", text)
+
+
 def rounded(image, size: QSize, radius: float = 8.0) -> QPixmap:
     """Crop to fill the slot and round the corners, at the screen's pixel ratio."""
     application = QApplication.instance()
@@ -181,7 +216,7 @@ class NewsCard(_Card):
         meta.addWidget(self.read_tag)
         body.addLayout(meta)
 
-        self.title = _label(article.get("localized_title") or article.get("title", "Untitled"), "storyTitle", wrap=True)
+        self.title = _headline(article.get("localized_title") or article.get("title", "Untitled"), "storyTitle")
         body.addWidget(self.title)
         self.excerpt = None
         if not compact:
@@ -226,7 +261,7 @@ class NewsCard(_Card):
 
     def set_localized(self, title: str, summary: str) -> None:
         if title:
-            self.title.setText(title)
+            set_headline(self.title, title)
             self.setAccessibleName(title)
         if summary and self.excerpt is not None:
             self.excerpt.setText(reading_excerpt(summary, 170))
@@ -272,7 +307,7 @@ class FeaturedStory(_Card):
         meta.addStretch()
         copy.addLayout(meta)
 
-        self.title = _label(article.get("localized_title") or article.get("title", "Top story"), "featuredTitle", wrap=True)
+        self.title = _headline(article.get("localized_title") or article.get("title", "Top story"), "featuredTitle")
         copy.addWidget(self.title)
         self.summary = None
         if not compact:
@@ -320,7 +355,7 @@ class FeaturedStory(_Card):
 
     def set_localized(self, title: str, summary: str) -> None:
         if title:
-            self.title.setText(title)
+            set_headline(self.title, title)
         if summary and self.summary is not None:
             self.summary.setText(reading_excerpt(summary, 240))
 
@@ -367,8 +402,7 @@ class StoryCard(_Card):
         meta.addWidget(importance)
         body.addLayout(meta)
 
-        self.title = _label(lead.get("localized_title") or lead.get("title", ""), "featuredTitle" if large else "storyTitle",
-                            wrap=True)
+        self.title = _headline(lead.get("localized_title") or lead.get("title", ""), "featuredTitle" if large else "storyTitle")
         body.addWidget(self.title)
         self.excerpt = None
         text = reading_excerpt(lead.get("localized_summary") or lead.get("summary", ""), 260 if large else 170)

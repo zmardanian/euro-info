@@ -136,9 +136,9 @@ QPushButton#trendChip {{ background:transparent; border:0; color:{p['accent']}; 
 QPushButton#trendChip:hover {{ text-decoration:underline; }}
 QPushButton#trendChip:checked {{ background:{p['accent_soft']}; border-radius:6px; }}
 QLabel#briefingTitle {{ color:{p['ink']}; font-family:'Newsreader'; font-size:{s['section'] + 2}px; font-weight:700; }}
-QLabel#storyTitle {{ color:{p['ink']}; font-family:'Newsreader'; font-size:{s['story']}px; font-weight:600; }}
+QLabel#storyTitle {{ color:{p['ink']}; font-family:'Newsreader'; font-size:{s['story']}px; font-weight:600; padding:2px 0; }}
 QLabel#storyTitle[read="true"] {{ color:{p['muted']}; }}
-QLabel#featuredTitle {{ color:{p['ink']}; font-family:'Newsreader'; font-size:{s['featured']}px; font-weight:700; }}
+QLabel#featuredTitle {{ color:{p['ink']}; font-family:'Newsreader'; font-size:{s['featured']}px; font-weight:700; padding:3px 0; }}
 QLabel#storyExcerpt {{ color:{p['muted']}; font-size:{s['excerpt']}px; }}
 QLabel#featuredSummary {{ color:{p['muted']}; font-size:{s['excerpt'] + 1}px; }}
 QToolButton#cardAction {{ background:transparent; border:1px solid transparent; border-radius:7px; padding:3px; }}

@@ -2,6 +2,12 @@
 
 All notable changes to Euro Info, newest first.
 
+## 4.0.1
+
+- Headlines no longer overlap or lose the tops of their letters: the Newsreader font reported too little
+  line height, so wrapped headlines now get explicit line spacing, and cards fit their content.
+- Euro Info is open source under the MIT License.
+
 ## 4.0.0
 
 Euro Info now follows all of Europe plus the US politics, economy and technology that matter worldwide, ranks

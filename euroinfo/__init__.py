@@ -2,7 +2,7 @@
 
 # The single source of the application version. The build script, the
 # AppStream metadata, the About dialog and the update check all read it here.
-__version__ = "4.0.0"
+__version__ = "4.0.1"
 
 APP_NAME = "Euro Info"
 APP_ID = "com.euroinfo.EuroInfo"

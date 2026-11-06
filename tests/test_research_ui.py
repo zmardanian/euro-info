@@ -234,7 +234,7 @@ class FastPathTests(UITestCase):
         key, card = next((k, c) for k, c in window.cards.items() if isinstance(c, NewsCard))
         window.apply_translations({key: ("Titlu tradus", "Rezumat tradus")})
         self.assertIs(window.cards[key], card)
-        self.assertEqual(card.title.text(), "Titlu tradus")
+        self.assertEqual(card.title.property("plainText"), "Titlu tradus")
 
     def test_marking_read_updates_the_card(self):
         window = self.window(self.stories(4))
