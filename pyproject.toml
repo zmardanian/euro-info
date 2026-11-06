@@ -1,0 +1,36 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "euro-info"
+dynamic = ["version"]
+description = "European news, weather and research reader for the Linux desktop, with private local AI."
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = ["PySide6>=6.8,<7", "requests>=2.31", "feedparser>=6.0"]
+
+[project.scripts]
+euro-info = "euroinfo.__main__:main"
+
+[project.urls]
+Homepage = "https://github.com/zmardanian/euro-info"
+
+[tool.setuptools.dynamic]
+version = { attr = "euroinfo.__version__" }
+
+[tool.setuptools.packages.find]
+include = ["euroinfo*"]
+
+[tool.ruff]
+line-length = 120
+target-version = "py311"
+extend-exclude = ["build", "build-linux", "dist"]
+
+[tool.ruff.lint]
+# Errors, pyflakes, bugbear, requests without timeouts and silent broad excepts.
+select = ["E", "W", "F", "B", "S110", "S113", "UP035"]
+ignore = ["E501"]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/*" = ["E402"]

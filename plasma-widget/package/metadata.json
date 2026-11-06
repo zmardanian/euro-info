@@ -1,0 +1,19 @@
+{
+    "KPlugin": {
+        "Authors": [
+            {
+                "Name": "Alex"
+            }
+        ],
+        "Category": "Online Services",
+        "Description": "Euro Info news, European stories, Romanian news, economy, international news and weather directly on the KDE Plasma desktop.",
+        "Icon": "globe",
+        "Id": "com.alexpetre.euroinfo",
+        "License": "MIT",
+        "Name": "Euro Info",
+        "Version": "1.0.0",
+        "Website": ""
+    },
+    "X-Plasma-API-Minimum-Version": "6.0",
+    "KPackageStructure": "Plasma/Applet"
+}

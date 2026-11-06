@@ -1,0 +1,37 @@
+# Local Python environment and bytecode
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+
+# Machine-local configuration and secrets
+.env
+.env.*
+!.env.example
+*.key
+*.pem
+
+# Generated PyInstaller/AppDir/AppImage output
+/build/
+/dist/
+/build-linux/
+/release/
+
+# Local experiments and dated backups (kept on the original workstation)
+*.backup
+*.backup-*
+*.before-*
+*.broken-*
+*.crash-backup
+*.visual-backup
+/EuroInfo.spec
+
+# Editor and OS noise
+.DS_Store
+.*.swp
+*~
+
+# Local tool caches and old environments
+.venv-*/
+.ruff_cache/
