@@ -12,6 +12,7 @@
 ![Windows](https://img.shields.io/badge/Windows-10%20%7C%2011-0078D4)
 ![Linux](https://img.shields.io/badge/Linux-x86__64-9D7A35)
 ![Languages](https://img.shields.io/badge/languages-7-2E7D4F)
+[![License: MIT](https://img.shields.io/badge/license-MIT-1F5C8B)](LICENSE)
 
 [**Download for Windows**](https://github.com/zmardanian/euro-info/releases/latest) ·
 [**Download for Linux**](https://github.com/zmardanian/euro-info/releases/latest) ·
@@ -82,3 +83,7 @@ Details: [Install](docs/install.md) · [Local AI](docs/local-ai.md).
 
 <sub>Euro Info shows headlines and excerpts from publishers' public feeds and links to the original articles.
 Inclusion of a source is not an endorsement; ranking signals are not reliability scores.</sub>
+
+## License
+
+Euro Info is free and open source under the [MIT License](LICENSE): use it, change it and share it, keeping the copyright notice. The bundled Newsreader font uses the SIL Open Font License.
